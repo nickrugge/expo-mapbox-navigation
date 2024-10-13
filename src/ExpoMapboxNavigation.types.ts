@@ -1,4 +1,4 @@
-import { ViewStyle, StyleProp } from "react-native/types";
+import type { ViewStyle, StyleProp } from "react-native/types";
 
 type ProgressEvent = {
   distanceRemaining: number;
@@ -8,7 +8,7 @@ type ProgressEvent = {
 };
 
 export type ExpoMapboxNavigationViewProps = {
-  coordinates: Array<{ latitude: number; longitude: number }>;
+  coordinates: { latitude: number; longitude: number }[];
   waypointIndices?: number[];
   useRouteMatchingApi?: boolean;
   locale?: string;

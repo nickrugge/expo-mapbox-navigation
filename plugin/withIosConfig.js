@@ -1,6 +1,6 @@
 const { withDangerousMod } = require("@expo/config-plugins");
-const fs = require("fs/promises");
-const path = require("path");
+const fs = require("node:fs/promises");
+const path = require("node:path");
 
 /**
  * This plugin adds a post-install step to the Podfile that addresses linking issues between pods and xcframeworks.
@@ -51,7 +51,7 @@ const withIosTokenInfoPlist = (config, accessToken) => {
     config.ios.infoPlist = {};
   }
 
-  config.ios.infoPlist["MBXAccessToken"] = accessToken;
+  config.ios.infoPlist.MBXAccessToken = accessToken;
 
   return config;
 };
