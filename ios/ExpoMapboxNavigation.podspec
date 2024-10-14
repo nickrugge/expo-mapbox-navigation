@@ -57,7 +57,6 @@ Pod::Spec.new do |s|
 
   s.dependency "ExpoModulesCore"
   s.dependency "MapboxMaps", $RNMapboxMapsVersion
-  s.dependency "Turf", "~> 3.0.0"
 
   s.source_files = "**/*.{h,m,swift}"
   s.exclude_files = ["Frameworks/*.xcframework/**/*.h"]
@@ -83,8 +82,15 @@ Pod::Spec.new do |s|
     "OTHER_SWIFT_FLAGS" => "$(inherited)",
   }
 
-  binary_names = BINARIES.map { |binary| "\"#{binary[:name]}\"" }.join(" ")
-  binary_urls = BINARIES.map { |binary| "\"#{BASE_URL}/#{binary[:package]}/releases/ios/packages/#{binary[:version]}/#{binary[:name]}.xcframework.zip\"" }.join(" ")
+  binary_names = BINARIES.map { |binary|
+    "\"#{binary[:name]}\""
+  }.join(" ")
+
+  binary_urls = BINARIES.map { |binary|
+    "\"#{BASE_URL}/#{binary[:package]}/" \
+    "releases/ios/packages/#{binary[:version]}/" \
+    "#{binary[:name]}.xcframework.zip\""
+  }.join(" ")
 
   s.prepare_command = <<-SCRIPT
       #!/bin/bash

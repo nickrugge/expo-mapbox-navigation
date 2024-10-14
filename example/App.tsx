@@ -1,9 +1,9 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { MapboxNavigationView } from "expo-mapbox-navigation";
 import Mapbox from "@rnmapbox/maps";
 import * as Location from "expo-location";
+import { MapboxNavigationView } from "expo-mapbox-navigation";
 import * as ScreenOrientation from "expo-screen-orientation";
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 
 Mapbox.setAccessToken("<TOKEN_HERE>");
 
@@ -14,7 +14,7 @@ export default function App() {
 
   React.useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === "granted") {
         setLocationAllowed(true);
       } else {
